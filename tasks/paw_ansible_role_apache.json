@@ -1,0 +1,152 @@
+{
+  "puppet_task_version": 1,
+  "supports_noop": false,
+  "description": "Execute the entire Ansible role imperatively",
+  "input_method": "stdin",
+  "parameters": {
+    "apache_global_vhost_settings": {
+      "description": "Ansible role variable (default: DirectoryIndex index.php index.html\n)",
+      "type": "Optional[String]"
+    },
+    "apache_listen_ip": {
+      "description": "Ansible role variable (default: *)",
+      "type": "Optional[String]"
+    },
+    "apache_listen_port": {
+      "description": "Ansible role variable (default: 80)",
+      "type": "Optional[Integer]"
+    },
+    "apache_listen_port_ssl": {
+      "description": "Ansible role variable (default: 443)",
+      "type": "Optional[Integer]"
+    },
+    "apache_ssl_cipher_suite": {
+      "description": "Ansible role variable (default: AES256+EECDH:AES256+EDH)",
+      "type": "Optional[String]"
+    },
+    "apache_ssl_protocol": {
+      "description": "Ansible role variable (default: All -SSLv2 -SSLv3)",
+      "type": "Optional[String]"
+    },
+    "apache_enablerepo": {
+      "description": "Ansible role variable (default: )",
+      "type": "Optional[String]"
+    },
+    "apache_create_vhosts": {
+      "description": "Ansible role variable (default: true)",
+      "type": "Optional[Boolean]"
+    },
+    "apache_vhosts_filename": {
+      "description": "Ansible role variable (default: vhosts.conf)",
+      "type": "Optional[String]"
+    },
+    "apache_vhosts_template": {
+      "description": "Ansible role variable (default: vhosts.conf.j2)",
+      "type": "Optional[String]"
+    },
+    "apache_remove_default_vhost": {
+      "description": "Set this to `true` to remove that default.",
+      "type": "Optional[Boolean]"
+    },
+    "apache_vhosts": {
+      "description": "Ansible role variable (default: [{\"servername\"=>\"local.dev\", \"documentroot\"=>\"/var/www/html\"}])",
+      "type": "Optional[Array]"
+    },
+    "apache_allow_override": {
+      "description": "Ansible role variable (default: All)",
+      "type": "Optional[String]"
+    },
+    "apache_options": {
+      "description": "Ansible role variable (default: -Indexes +FollowSymLinks)",
+      "type": "Optional[String]"
+    },
+    "apache_vhosts_ssl": {
+      "description": "Ansible role variable (default: [])",
+      "type": "Optional[Array]"
+    },
+    "apache_ignore_missing_ssl_certificate": {
+      "description": "Ansible role variable (default: true)",
+      "type": "Optional[Boolean]"
+    },
+    "apache_ssl_no_log": {
+      "description": "Ansible role variable (default: true)",
+      "type": "Optional[Boolean]"
+    },
+    "apache_mods_enabled": {
+      "description": "Only used on Debian/Ubuntu/Redhat.",
+      "type": "Optional[Array]"
+    },
+    "apache_mods_disabled": {
+      "description": "Ansible role variable (default: [])",
+      "type": "Optional[Array]"
+    },
+    "apache_conf_enabled": {
+      "description": "Ansible role variable (default: [])",
+      "type": "Optional[Array]"
+    },
+    "apache_conf_disabled": {
+      "description": "Ansible role variable (default: [])",
+      "type": "Optional[Array]"
+    },
+    "apache_state": {
+      "description": "Set initial apache state. Recommended values: `started` or `stopped`",
+      "type": "Optional[String]"
+    },
+    "apache_enabled": {
+      "description": "Set initial apache service status. Recommended values: `true` or `false`",
+      "type": "Optional[Boolean]"
+    },
+    "apache_restart_state": {
+      "description": "`restarted` or `reloaded`",
+      "type": "Optional[String]"
+    },
+    "apache_packages_state": {
+      "description": "if you want to upgrade or switch versions using a new repo.",
+      "type": "Optional[String]"
+    },
+    "par_tags": {
+      "description": "An array of Ansible tags to execute (optional)",
+      "type": "Optional[Array[String]]"
+    },
+    "par_skip_tags": {
+      "description": "An array of Ansible tags to skip (optional)",
+      "type": "Optional[Array[String]]"
+    },
+    "par_start_at_task": {
+      "description": "The name of the task to start execution at (optional)",
+      "type": "Optional[String]"
+    },
+    "par_limit": {
+      "description": "Limit playbook execution to specific hosts (optional)",
+      "type": "Optional[String]"
+    },
+    "par_verbose": {
+      "description": "Enable verbose output from Ansible (optional)",
+      "type": "Optional[Boolean]"
+    },
+    "par_check_mode": {
+      "description": "Run Ansible in check mode (dry-run) (optional)",
+      "type": "Optional[Boolean]"
+    },
+    "par_timeout": {
+      "description": "Timeout in seconds for playbook execution (optional)",
+      "type": "Optional[Integer]"
+    },
+    "par_user": {
+      "description": "Remote user to use for Ansible connections (optional)",
+      "type": "Optional[String]"
+    },
+    "par_env_vars": {
+      "description": "Additional environment variables for ansible-playbook execution (optional)",
+      "type": "Optional[Hash]"
+    }
+  },
+  "implementations": [
+    {
+      "name": "paw_ansible_role_apache.rb",
+      "requirements": [
+        "puppet-agent"
+      ]
+    }
+  ]
+}
